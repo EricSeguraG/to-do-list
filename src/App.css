@@ -1,105 +1,89 @@
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f7f9;
-  margin: 0;
+.app-container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
-.app-container {
-  width: 100%;
-  max-width: 500px;
-  padding: 20px;
+  margin-top: 50px;
+  font-family: Arial, sans-serif;
 }
 
 .todo-container {
-  background-color: #ffffff;
-  padding: 30px;
+  background: #fff;
+  padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-  text-align: center;
-  color: #333;
-  margin-bottom: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 400px;
 }
 
 .task-form {
   display: flex;
-  gap: 10px;
-  margin-bottom: 25px;
+  gap: 8px;
+  margin-bottom: 20px;
 }
 
-.task-form input {
-  flex-grow: 1;
-  padding: 12px;
+.task-form input,
+.task-form select {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
   border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 16px;
-}
-
-.task-form input:focus {
-  outline: none;
-  border-color: #007bff;
 }
 
 .task-form button {
-  padding: 12px 20px;
-  background-color: #007bff;
-  color: white;
+  padding: 8px 16px;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
+  background: #007bff;
+  color: white;
   cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.2s;
 }
 
 .task-form button:hover {
-  background-color: #0056b3;
+  background: #0056b3;
 }
 
 .task-list {
   list-style: none;
   padding: 0;
-  margin: 0;
 }
 
 .task-list li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
-  border-bottom: 1px solid #eee;
-}
-
-.task-list li:last-child {
-  border-bottom: none;
-}
-
-.task-list li span {
-  cursor: pointer;
-  flex-grow: 1;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-size: 16px;
 }
 
 .task-list li.completed span {
   text-decoration: line-through;
-  color: #999;
+  opacity: 0.6;
 }
 
-.task-list li button {
-  background-color: #dc3545;
-  color: white;
+/* 🎨 Colores por prioridad */
+.priority-alta {
+  background: #ffdddd;
+  border-left: 6px solid #ff4d4d;
+}
+
+.priority-mitjana {
+  background: #fff4cc;
+  border-left: 6px solid #ffc107;
+}
+
+.priority-baixa {
+  background: #ddffdd;
+  border-left: 6px solid #28a745;
+}
+
+.task-list button {
+  background: transparent;
   border: none;
-  border-radius: 6px;
-  padding: 8px 12px;
+  color: #d11a2a;
   cursor: pointer;
-  margin-left: 10px;
-  transition: background-color 0.2s;
+  font-weight: bold;
 }
 
-.task-list li button:hover {
-  background-color: #c82333;
+.task-list button:hover {
+  color: #a00;
 }
