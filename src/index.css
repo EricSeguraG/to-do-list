@@ -1,13 +1,134 @@
-body {
+/* ----- Estilos generales ----- */
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  font-family: "Segoe UI", Roboto, sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  background: linear-gradient(135deg, #0c0c0c, #a29bfe42);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ----- Contenedor principal ----- */
+.app-container {
+  width: 100%;
+  max-width: 420px;
+  padding: 1rem;
+}
+
+.todo-container {
+  background: #ffffffdd;
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* ----- Título ----- */
+.todo-container h1 {
+  text-align: center;
+  color: #2d3436;
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+}
+
+/* ----- Formulario ----- */
+.task-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.task-form input {
+  flex: 1;
+  padding: 0.6rem 0.8rem;
+  border: 2px solid #dfe6e9;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.task-form input:focus {
+  outline: none;
+  border-color: #0984e3;
+}
+
+.task-form button {
+  padding: 0.6rem 1rem;
+  background-color: #0984e3;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+
+.task-form button:hover {
+  background-color: #74b9ff;
+}
+
+/* ----- Lista de tareas ----- */
+.task-list {
+  list-style: none;
+}
+
+.task-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f1f2f6;
+  margin-bottom: 0.6rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  transition: background 0.25s;
+}
+
+.task-list li:hover {
+  background: #dfe6e9;
+}
+
+.task-list li span {
+  flex: 1;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #2d3436;
+}
+
+/* Tareas completadas */
+.task-list li.completed span {
+  text-decoration: line-through;
+  color: #636e72;
+}
+
+/* Botón eliminar */
+.task-list li button {
+  background-color: #d63031;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+
+.task-list li button:hover {
+  background-color: #ff7675;
+}
+
+/* ----- Responsividad ----- */
+@media (max-width: 480px) {
+  .todo-container {
+    padding: 1.2rem;
+  }
+
+  .task-form button {
+    font-size: 0.9rem;
+  }
 }

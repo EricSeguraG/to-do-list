@@ -1,25 +1,34 @@
 import React, { useState } from 'react';
 import './App.css';
+import TaskList from './components/TaskList';
+import TaskForm from './components/TaskForm';
 
 function App() {
-  const [tasks, setTasks] = useState([]);
-  const [newTask, setNewTask] = useState('');
-  const [priority, setPriority] = useState('Mitjana'); // valor por defecto
+  const [tasks, setTasks] = useState([
+    { id: 1, text: 'Comprar pa', completed: false, dueDate: null }, // Afegim dueDate
+    { id: 2, text: 'Acabar informe', completed: true, dueDate: new Date().toISOString() },
+  ]);
 
-  const handleAddTask = (e) => {
-    e.preventDefault();
-    if (newTask.trim() === '') return;
-
+  // Afegir nova tasca amb dueDate: null
+  const handleAddTask = (text) => {
     const task = {
       id: Date.now(),
-      text: newTask,
+      text: text,
       completed: false,
-      priority: priority,
+      dueDate: null, // Nou camp
     };
-
     setTasks([...tasks, task]);
-    setNewTask('');
-    setPriority('Mitjana'); // reiniciar prioridad
+  };
+
+  // Actualitzar només la data
+  const handleUpdateTaskDate = (taskId, newDate) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === taskId
+          ? { ...task, dueDate: newDate ? newDate.toISOString() : null }
+          : task
+      )
+    );
   };
 
   const handleToggleComplete = (taskId) => {
@@ -34,43 +43,16 @@ function App() {
     setTasks(tasks.filter((task) => task.id !== taskId));
   };
 
-  // Ordenar tareas por prioridad: Alta > Mitjana > Baixa
-  const priorityOrder = { Alta: 1, Mitjana: 2, Baixa: 3 };
-  const sortedTasks = [...tasks].sort(
-    (a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]
-  );
-
   return (
     <div className="app-container">
       <div className="todo-container">
-        <h1>La Meva Llista de Tasques</h1>
-        <form onSubmit={handleAddTask} className="task-form">
-          <input
-            type="text"
-            value={newTask}
-            onChange={(e) => setNewTask(e.target.value)}
-            placeholder="Afegeix una nova tasca..."
-          />
-          <select value={priority} onChange={(e) => setPriority(e.target.value)}>
-            <option value="Alta">Alta</option>
-            <option value="Mitjana">Mitjana</option>
-            <option value="Baixa">Baixa</option>
-          </select>
-          <button type="submit">Afegir</button>
-        </form>
-        <ul className="task-list">
-          {sortedTasks.map((task) => (
-            <li
-              key={task.id}
-              className={`${task.completed ? 'completed' : ''} priority-${task.priority.toLowerCase()}`}
-            >
-              <span onClick={() => handleToggleComplete(task.id)}>
-                {task.text} <strong>({task.priority})</strong>
-              </span>
-              <button onClick={() => handleDeleteTask(task.id)}>Eliminar</button>
-            </li>
-          ))}
-        </ul>
+        <TaskForm onAddTask={handleAddTask} />
+        <TaskList
+          tasks={tasks}
+          onToggleComplete={handleToggleComplete}
+          onDeleteTask={handleDeleteTask}
+          onUpdateTaskDate={handleUpdateTaskDate}
+        />
       </div>
     </div>
   );

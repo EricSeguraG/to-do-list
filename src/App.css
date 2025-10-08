@@ -1,89 +1,107 @@
-.app-container {
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7f9;
+  margin: 0;
   display: flex;
   justify-content: center;
-  margin-top: 50px;
-  font-family: Arial, sans-serif;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
 }
 
 .todo-container {
-  background: #fff;
-  padding: 20px;
+  background-color: #ffffff;
+  padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
 }
 
 .task-form {
   display: flex;
-  gap: 8px;
-  margin-bottom: 20px;
+  gap: 10px;
+  margin-bottom: 25px;
 }
 
-.task-form input,
-.task-form select {
-  flex: 1;
-  padding: 8px;
-  border-radius: 6px;
+.task-form input {
+  flex-grow: 1;
+  padding: 12px;
   border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.task-form input:focus {
+  outline: none;
+  border-color: #007bff;
 }
 
 .task-form button {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 6px;
-  background: #007bff;
+  padding: 12px 20px;
+  background-color: #090909;
   color: white;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s;
 }
 
 .task-form button:hover {
-  background: #0056b3;
+  background-color: #02f31a;
 }
 
 .task-list {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .task-list li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  border-radius: 8px;
-  margin-bottom: 8px;
-  font-size: 16px;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.task-list li:last-child {
+  border-bottom: none;
+}
+
+.task-list li span {
+  cursor: pointer;
+  flex-grow: 1;
 }
 
 .task-list li.completed span {
   text-decoration: line-through;
-  opacity: 0.6;
+  color: #999;
 }
 
-/* 🎨 Colores por prioridad */
-.priority-alta {
-  background: #ffdddd;
-  border-left: 6px solid #ff4d4d;
-}
-
-.priority-mitjana {
-  background: #fff4cc;
-  border-left: 6px solid #ffc107;
-}
-
-.priority-baixa {
-  background: #ddffdd;
-  border-left: 6px solid #28a745;
-}
-
-.task-list button {
-  background: transparent;
+/* 🔹 Botón de eliminar (modificado) */
+.task-list li button {
+  background-color: #000000; /* negro */
+  color: white;
   border: none;
-  color: #d11a2a;
+  border-radius: 3px; /* esquinas más rectas */
+  padding: 5px 9px; /* más pequeño */
   cursor: pointer;
-  font-weight: bold;
+  margin-left: 10px;
+  font-size: 14px; /* texto más pequeño */
+  transition: background-color 0.2s;
 }
 
-.task-list button:hover {
-  color: #a00;
+.task-list li button:hover {
+  background-color: #f40404; /* gris oscuro al pasar el mouse */
 }
